@@ -39,13 +39,13 @@ def pull_graphite_data(url):
 
     # Catch URL errors
     try:
-	data = urllib.urlopen(url).read()
-	if len(data) == 0:
-	    print "Error: No data was returned. Did you specify an existing metric? - " + url
-	    sys.exit(STATE_UNKNOWN)
-	return data
+        data = urllib.urlopen(url).read()
+        if len(data) == 0:
+            print "Error: No data was returned. Did you specify an existing metric? - " + url
+            sys.exit(STATE_UNKNOWN)
+        return data
     except Exception,e:
-	print "Error: "+ str(e) +" - " + url
+        print "Error: "+ str(e) +" - " + url
         sys.exit(STATE_UNKNOWN)
 
 def eval_graphite_data(data, seconds):
@@ -107,9 +107,9 @@ def main(argv):
         opts, args = getopt.getopt(argv, 'hWULru:c:w:s:',
                                     ['help', 'holt-winters', 'critupper',
                                      'critlower', 'url=', 'crit=', 'warn=',
-                                     'seconds=', 'd1=', 'd2='
-				     ,'scale=' ,'scale-invert='
-				     ])
+                                     'seconds=', 'd1=', 'd2=',
+                                     'scale=' ,'scale-invert='
+                                    ])
     except getopt.GetoptError, err:
         print str(err)
         sys.exit(STATE_UNKNOWN)
